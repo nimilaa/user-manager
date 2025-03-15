@@ -1,7 +1,7 @@
 import {createSlice, createAsyncThunk, PayloadAction, ActionReducerMapBuilder} from '@reduxjs/toolkit';
-import {usersAPIEndPont} from "@/config/apiConfig.ts";
 import {User, UsersState} from "@/types";
 import {RootState} from "@/app/store.ts";
+import {usersAPIEndPont} from "@/config/apiConfig.ts";
 
 // Initial state
 const initialState: UsersState = {

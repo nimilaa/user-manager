@@ -80,7 +80,7 @@ const DistributionByAgeChartModal: React.FC<DistributionByAgeChartModalProps> = 
 
             setChartOptions(defaultOptions);
         }
-    }, [userData])
+    }, [userData]);
 
     return (
         <Modal isOpen={isOpen} onClose={onClose} className="xs:w-full md:w-1/2 max-w-full">

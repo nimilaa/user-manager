@@ -70,8 +70,8 @@ const UsersForm: React.FC<ReactFormProps> = ({user, onSubmit}) => {
                 />
             ))}
             <div className="flex gap-2">
-                <Button type="submit" color="primary">{user? 'Update User': 'Add User'}</Button>
-                <Button type="reset" variant="flat">Reset</Button>
+                <Button type="submit" className="bg-primary text-white dark:bg-default">{user? 'Update User': 'Add User'}</Button>
+                <Button type="reset" className="bg-primary text-white dark:bg-default">Reset</Button>
             </div>
         </Form>
     );

@@ -6,6 +6,11 @@ import {User} from "@/types";
 import {AppDispatch, RootState} from "@/app/store.ts";
 import {AddUserIcon, BarChartIcon, DeleteIcon, EditIcon, PieChartIcon} from "@/components/Icons.tsx";
 import {addUser, deleteUser, editUser, fetchUsers} from "@/features/users/usersSlice.ts";
+import Table from "@/components/Table.tsx"
+import UserFormModal from "@/components/UserFormModal.tsx";
+import DistributionByAgeChartModal from "@/components/chart/DistributionByAgeChartModal.tsx";
+import DistributionByCityChartModal from "@/components/chart/DistributionByCitiesChartModal.tsx";
+import ThemeToggle from "@/components/ThemeToggle.tsx";
 
 const Users: React.FC = ({}) => {
     const [isUserModalOpen, setUserModalOpen] = useState<boolean>(false);
@@ -106,11 +111,12 @@ const Users: React.FC = ({}) => {
                     value={searchKey}
                     onValueChange={(newValue: string) => setSearchKey(newValue?.toLowerCase())}
                 />
-                <Button color="primary" onPress={() => setUserModalOpen(true)} className="max-xs:min-w-10 max-xs:px-2 md:min-w-36"><AddUserIcon/><span className="ml-2 md:block hidden">Add User</span></Button>
-                <Button color="primary" onPress={() => setIsAgeChartModalOpen(true)} className="max-xs:min-w-10 max-xs:px-2 md:min-w-44"><PieChartIcon/><span className="ml-2 md:block hidden">Open Age Chart</span></Button>
-                <Button color="primary" onPress={() => setIsCityChartModalOpen(true)} className="max-xs:min-w-10 max-xs:px-2 md:min-w-44"><BarChartIcon/><span className="ml-2 md:block hidden">Open City Chart</span></Button>
+                <Button  onPress={() => setUserModalOpen(true)} className="max-xs:min-w-10 max-xs:px-2 md:min-w-36 bg-primary text-white dark:bg-default"><AddUserIcon/><span className="ml-2 md:block hidden">Add User</span></Button>
+                <Button color="primary" onPress={() => setIsAgeChartModalOpen(true)} className="max-xs:min-w-10 max-xs:px-2 md:min-w-44 bg-primary text-white dark:bg-default"><PieChartIcon/><span className="ml-2 md:block hidden">Open Age Chart</span></Button>
+                <Button color="primary" onPress={() => setIsCityChartModalOpen(true)} className="max-xs:min-w-10 max-xs:px-2 md:min-w-44 bg-primary text-white dark:bg-default"><BarChartIcon/><span className="ml-2 md:block hidden">Open City Chart</span></Button>
+                <ThemeToggle />
             </div>
-            <div className="h-user-table-container">
+            <div className="h-user-table-container ag-theme-alpine dark:ag-theme-alpine-dark">
                 <Table data={data} colDefs={colDefs} defaultColDef={defaultColDef} externalSearchKey={searchKey} doesExternalFilterPass={doesExternalFilterPass}/>
             </div>
             <UserFormModal isOpen={isUserModalOpen} user={selectedUserToEdit} onClose={onCloseUserFormModal} onSubmit={handleAddAndEditUser}/>

@@ -1,13 +1,14 @@
-import {AllCommunityModule, ModuleRegistry} from 'ag-grid-community';
-import { Provider } from 'react-redux';
+import {Provider} from 'react-redux';
 import store from "./app/store.ts";
 import Users from "./pages/Users.tsx";
+import ThemeProvider from "@/providers/ThemeProvider.tsx";
 
-ModuleRegistry.registerModules([AllCommunityModule]);
 const App = () => {
     return (
         <Provider store={store}>
+            <ThemeProvider>
                 <Users/>
+            </ThemeProvider>
         </Provider>
     )
 }

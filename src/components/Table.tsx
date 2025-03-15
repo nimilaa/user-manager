@@ -1,7 +1,21 @@
 import React, {useCallback, useEffect, useRef} from "react";
 import {AgGridReact} from "ag-grid-react";
-import type { ColDef } from "ag-grid-community";
+import type {ColDef} from "ag-grid-community";
+import {
+    AllCommunityModule,
+    colorSchemeDarkWarm,
+    colorSchemeLightWarm,
+    ModuleRegistry,
+    themeQuartz
+} from "ag-grid-community";
 import {User} from "@/types";
+import {useTheme} from "@/providers/ThemeContext.ts";
+import {THEMES} from "@/config/settings.ts";
+
+ModuleRegistry.registerModules([AllCommunityModule]);
+
+const themeLightWarm = themeQuartz.withPart(colorSchemeLightWarm);
+const themeDarkWarm = themeQuartz.withPart(colorSchemeDarkWarm);
 
 interface TableProps {
     data: User,
@@ -12,6 +26,7 @@ interface TableProps {
 }
 
 const Table: React.FC<TableProps> = React.memo(({data, colDefs, defaultColDef, externalSearchKey, doesExternalFilterPass}) => {
+    const {theme} = useTheme();
     const userGrid = useRef(null);
 
     const handleResize = useCallback(() => {
@@ -43,6 +58,7 @@ const Table: React.FC<TableProps> = React.memo(({data, colDefs, defaultColDef, e
                 columnDefs={colDefs}
                 defaultColDef={defaultColDef}
                 onGridReady={onGridReady}
+                theme={theme === THEMES.LIGHT? themeLightWarm: themeDarkWarm}
                 isExternalFilterPresent={isExternalFilterPresent}
                 doesExternalFilterPass={doesExternalFilterPass}
             />
