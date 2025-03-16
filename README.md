@@ -8,11 +8,11 @@ This repo provides a starting reference to get the User Manager implementation. 
 ## Running the Project
 
 - This needs `user-server` project to get data
-- Switch to the branch you need to build in user-server repo
+- Go to the user-server folder
 - To install  `npm i` or `npm install`
 - `npx json-server db.json`
 - You can access user data with [localhost:3000/users](localhost:3000/users)
-- The switch to the branch you need to build in user-manager repo
+- Move back to root folder of user-manager repo
 - To install  `npm i` or `npm install`
 - `npm run dev`
 - Navigate to [localhost:4000/](localhost:4000/)
