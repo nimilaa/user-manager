@@ -31,7 +31,8 @@ export interface UserFormFields {
     id: string;
     label: string;
     placeHolder: string;
-    errorMessage: string;
+    valueMissingErrorMessage: string;
+    typeMissingErrorMessage?: string;
     isRequired: boolean;
     inputType: string;
 }
